@@ -32,6 +32,9 @@ class MyApp extends StatelessWidget {
       ),
       onGenerateRoute: appRouter.generateRoute,
       initialRoute: initialRoute,
+
+
+
       // home: BlocProvider(
       //   create: (context) => HomeLayoutCubit()..getAllData(),
       //   child: HomeLayoutScreen(),
