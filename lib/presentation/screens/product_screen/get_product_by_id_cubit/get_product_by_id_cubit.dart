@@ -10,20 +10,26 @@ part 'get_product_by_id_state.dart';
 
 class GetProductByIdCubit extends Cubit<GetProductByIdState> {
   GetProductByIdCubit() : super(GetProductByIdInitial());
+
   static GetProductByIdCubit get(context) => BlocProvider.of(context);
 
   ProductModel? productModel;
 
   void getProductItems({
-  int? category_id,
-}){
+    int? categoryId,
+  }) {
     emit(GetProductItemsLoadingState());
-    DioHelper.getdata(url: 'products?category_id=$category_id',token: CacheHelper.getdata(key: 'token')).then((value) {
+    DioHelper.getdata(
+        url: 'products',
+        token: CacheHelper.getdata(key: 'token'),
+        query: {
+          'category_id': categoryId,
+        }).then((value) {
       productModel = ProductModel.fromJson(value.data);
       debugPrint(productModel!.data!.data![0].name);
       debugPrint("catersdsckjnnnnnnn");
       emit(GetProductItemsSuccessStata(productModel!));
-    }).catchError((error){
+    }).catchError((error) {
       debugPrint(error.toString());
       emit(GetProductItemsFailState());
     });

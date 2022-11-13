@@ -108,7 +108,7 @@ class ExploreScreen extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) => BlocProvider(
-              create: (context) => GetProductByIdCubit()..getProductItems(category_id: item.id),
+              create: (context) => GetProductByIdCubit()..getProductItems(categoryId: item.id),
               child: ProductScreen(appBarTitle: item.name!),
             ),
           ),

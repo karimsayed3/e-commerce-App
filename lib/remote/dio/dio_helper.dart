@@ -11,6 +11,16 @@ class DioHelper {
         receiveDataWhenStatusError: true,
       ),
     );
+    dio..options.connectTimeout = 10 * 1000
+      ..options.receiveTimeout = 10 * 1000 ;
+    dio.interceptors.add(LogInterceptor(
+      responseBody: true,
+      error: true,
+      requestHeader: false,
+      responseHeader: false,
+      request : true,
+      requestBody : true,
+    ));
   }
 
   static Future<Response> getdata({

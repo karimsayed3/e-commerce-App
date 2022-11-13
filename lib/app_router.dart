@@ -4,6 +4,7 @@ import 'package:e_commerce/business/login/login_cubit.dart';
 import 'package:e_commerce/business/registration/registration_cubit.dart';
 import 'package:e_commerce/presentation/screens/home_layout_screen/home_layout_screen.dart';
 import 'package:e_commerce/presentation/screens/login_screen/login_screen.dart';
+import 'package:e_commerce/presentation/screens/product_details_screen/product_details_screen.dart';
 import 'package:e_commerce/presentation/screens/see_all_productes/see_all_productes.dart';
 import 'package:e_commerce/presentation/screens/signUp_screen/signup_screen.dart';
 import 'package:e_commerce/presentation/screens/splash_screen/splash_screen.dart';
