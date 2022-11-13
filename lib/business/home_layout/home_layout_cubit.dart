@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:e_commerce/data/categories/cateory_model.dart';
 import 'package:e_commerce/data/product/product_model.dart';
-import 'package:e_commerce/presentation/screens/explore/explore_screen.dart';
+import 'package:e_commerce/presentation/screens/explore_screen/explore_screen.dart';
 import 'package:e_commerce/remote/cashe_helper/cashe_helper.dart';
 import 'package:e_commerce/remote/dio/dio_helper.dart';
 import 'package:flutter/foundation.dart';

@@ -10,7 +10,7 @@ class SeeAllProducts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
-
+    var width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         title:const Text(
@@ -28,22 +28,25 @@ class SeeAllProducts extends StatelessWidget {
         elevation: 0.0,
         backgroundColor: Colors.white,
       ),
-      body: SingleChildScrollView(
-        child: BlocBuilder<HomeLayoutCubit, HomeLayoutState>(
-          builder: (context, state) {
-            var cubit = HomeLayoutCubit.get(context);
-            if (cubit.productModel != null) {
-              return productItem(context, cubit.productModel!.data!.data!,
-                  cubit.productModel!.data!.total);
-            } else {
-              return SizedBox(
-                height: height,
-                child: const Center(
-                  child: CircularProgressIndicator(),
-                ),
-              );
-            }
-          },
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: width * .04),
+        child: SingleChildScrollView(
+          child: BlocBuilder<HomeLayoutCubit, HomeLayoutState>(
+            builder: (context, state) {
+              var cubit = HomeLayoutCubit.get(context);
+              if (cubit.productModel != null) {
+                return productItem(context, cubit.productModel!.data!.data!,
+                    cubit.productModel!.data!.total);
+              } else {
+                return SizedBox(
+                  height: height,
+                  child: const Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                );
+              }
+            },
+          ),
         ),
       ),
     );
