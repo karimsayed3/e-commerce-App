@@ -63,4 +63,7 @@ class HomeLayoutCubit extends Cubit<HomeLayoutState> {
     emit(ChangeScreenState());
   }
 
+
+  
+
 }

@@ -1,3 +1,8 @@
+import 'package:e_commerce/business/home_layout/home_layout_cubit.dart';
+import 'package:e_commerce/data/categories/cateory_model.dart';
+import 'package:e_commerce/data/product/product_model.dart';
+import 'package:e_commerce/utils/components.dart';
+import 'package:e_commerce/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -37,4 +42,6 @@ class _HomeLayoutScreenState extends State<HomeLayoutScreen> {
       },
     );
   }
+
 }
+
