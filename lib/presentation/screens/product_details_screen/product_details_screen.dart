@@ -73,10 +73,6 @@ class ProductDetailsScreen extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Positioned(
-                      bottom: 0,
-                      child: Row(),
-                    )
                   ],
                 );
               } else {
