@@ -24,7 +24,7 @@ class GetProductItemsFailState extends HomeLayoutState {}
 // AddToCart
 class AddToCartLoadingState extends HomeLayoutState {}
 class AddToCartSuccessStata extends HomeLayoutState {
-  ProductModel productModel;
+  AddToCartProductData productModel;
   AddToCartSuccessStata(this.productModel);
 }
 class AddToCartFailState extends HomeLayoutState {}

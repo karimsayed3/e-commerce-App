@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:e_commerce/data/add_to_cart/add_to_cart.dart';
 import 'package:e_commerce/data/categories/cateory_model.dart';
 import 'package:e_commerce/data/product/product_model.dart';
 import 'package:e_commerce/presentation/screens/explore_screen/explore_screen.dart';
@@ -64,7 +65,7 @@ class HomeLayoutCubit extends Cubit<HomeLayoutState> {
     emit(ChangeScreenState());
   }
 
-  ProductModel? addedItem;
+  AddToCartProductData? addedItem;
 
   void addToCart(int id) {
     emit(AddToCartLoadingState());
@@ -72,7 +73,7 @@ class HomeLayoutCubit extends Cubit<HomeLayoutState> {
         url: "carts",
         token: CacheHelper.getdata(key: 'token'),
         data: {"product_id": id}).then((value) {
-      addedItem = ProductModel.fromJson(value.data);
+      addedItem = AddToCartProductData.fromJson(value.data);
       emit(AddToCartSuccessStata(addedItem!));
     }).catchError((error) {
       debugPrint(error.toString());

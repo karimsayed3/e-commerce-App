@@ -8,6 +8,8 @@ class CartScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var width = MediaQuery.of(context).size.width;
+    var height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: BlocListener<HomeLayoutCubit, HomeLayoutState>(
         listener: (context, state) {
@@ -21,15 +23,26 @@ class CartScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(5),
                     image: DecorationImage(
                         image: NetworkImage(
-                            (state).productModel.data!.data![0].image!),
+                            (state).productModel.data!.product!.image!),
                         fit: BoxFit.cover),
                   ),
+                ),
+                SizedBox(
+                  width: width *.02,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      (state).productModel.data!.product!.name!
+                    ),
+                  ],
                 ),
               ],
             );
           }
         },
-        child: SizedBox.shrink(),
+        child: const SizedBox.shrink(),
       ),
     );
   }
