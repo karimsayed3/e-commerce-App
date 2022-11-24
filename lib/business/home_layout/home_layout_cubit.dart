@@ -17,35 +17,36 @@ class HomeLayoutCubit extends Cubit<HomeLayoutState> {
 
   CategoryModel? categoryModel;
 
-  void getCategoryItems(){
+  void getCategoryItems() {
     emit(GetCategoryItemsLoadingState());
     DioHelper.getdata(url: 'categories').then((value) {
       categoryModel = CategoryModel.fromJson(value.data);
       debugPrint(categoryModel!.data!.data![0].name);
       debugPrint("catersdsckjnnnnnnn");
       emit(GetCategoryItemsSuccessStata(categoryModel!));
-    }).catchError((error){
+    }).catchError((error) {
       debugPrint(error.toString());
       emit(GetCategoryItemsFailState());
     });
   }
 
-   ProductModel? productModel;
+  ProductModel? productModel;
 
-  void getProductItems(){
+  void getProductItems() {
     emit(GetProductItemsLoadingState());
-    DioHelper.getdata(url: 'products',token: CacheHelper.getdata(key: 'token')).then((value) {
+    DioHelper.getdata(url: 'products', token: CacheHelper.getdata(key: 'token'))
+        .then((value) {
       productModel = ProductModel.fromJson(value.data);
       debugPrint(productModel!.data!.data![0].name);
       debugPrint("catersdsckjnnnnnnn");
       emit(GetProductItemsSuccessStata(productModel!));
-    }).catchError((error){
+    }).catchError((error) {
       debugPrint(error.toString());
       emit(GetProductItemsFailState());
     });
   }
 
-  void getAllData(){
+  void getAllData() {
     getCategoryItems();
     getProductItems();
   }
@@ -58,12 +59,39 @@ class HomeLayoutCubit extends Cubit<HomeLayoutState> {
 
   int currentIndex = 0;
 
-  void changePage(index){
+  void changePage(index) {
     currentIndex = index;
     emit(ChangeScreenState());
   }
 
+  ProductModel? addedItem;
 
-  
+  void addToCart(int id) {
+    emit(AddToCartLoadingState());
+    DioHelper.postData(
+        url: "carts",
+        token: CacheHelper.getdata(key: 'token'),
+        data: {"product_id": id}).then((value) {
+      addedItem = ProductModel.fromJson(value.data);
+      emit(AddToCartSuccessStata(addedItem!));
+    }).catchError((error) {
+      debugPrint(error.toString());
+      emit(AddToCartFailState());
+    });
+  }
 
+  ProductModel? removedItem;
+
+  void removeFromCart(int id) {
+    emit(RemoveFromCartLoadingState());
+    DioHelper.postData(
+        url: "carts",
+        token: CacheHelper.getdata(key: 'token'),
+        data: {"product_id": id}).then((productData) {
+      removedItem = ProductModel.fromJson(productData.data);
+      emit(RemoveFromCartSuccessStata(removedItem!));
+    }).catchError((error) {
+      debugPrint(error.toString());
+    });
+  }
 }
